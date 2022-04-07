@@ -22,6 +22,10 @@ RUN apt-get update
 # RUN apt-get update && apt-get -y -q install libreoffice libreoffice-writer ure libreoffice-java-common libreoffice-core libreoffice-common openjdk-8-jre fonts-opensymbol hyphen-fr hyphen-de hyphen-en-us hyphen-it hyphen-ru
 
 WORKDIR /home/node/app
-COPY . .
 
-CMD ["pm2-runtime", "ecosystem.config.cjs"]
+COPY src src/
+# COPY package.json .
+COPY ecosystem.config.js .
+
+# CMD ["pm2-runtime", "ecosystem.config.js"]
+CMD ["pm2-runtime", "start", "ecosystem.config.js"]
